@@ -1,8 +1,16 @@
-just-mvc
+x-mvc
 ===============
 this is a simple node.js mvc structure
+this is a extended version of just-mvc it is more better of just-mvc.
+in this mvc we have added more feture like:
 
-* Database
+* create slug
+* flush message
+* more comfortable structure
+
+this mvc have some separet part like
+
+* Database(default mysql)
 * App structure
 * Router
 * Separate modules
@@ -30,9 +38,11 @@ You can specify those dependencies version by option, please refer to [this](#op
 
 ##Installation
 
-	npm install just-mvc --save
+	npm install x-mvc --save
 
 Database package
+
+	for mysql no need to proccess bellow step (default database mysql)
 
 	npm install <your database package>
 
@@ -63,7 +73,7 @@ Please check example or follow these document
 ###Init
 
 ```js
-require(just-mvc)(function(err){
+require(x-mvc)(function(err){
 	if(err) {
 		console.log(err);
 		return;
@@ -168,7 +178,7 @@ module.exports = {
             protocol: 'mysql',
             user: 'root',
             password: '123456789',
-            database: 'just-mvc-test',
+            database: 'test',
             connectionLimit: 100
         }
     },
@@ -181,7 +191,7 @@ module.exports = {
             protocol: 'mysql',
             user: 'root',
             password: '123456789',
-            database: 'just-mvcc-test',
+            database: 'test',
             connectionLimit: 100
         }
     }
@@ -208,10 +218,7 @@ Example:
 
 ```js
 module.exports = function(app, express) {
-    app.set('title', 'testing');
-    app.set('views', '../views');
 	app.set('view engine', 'ejs');
-    app.use(express.favicon());
 };
 ```
 
@@ -228,7 +235,7 @@ http.createServer(app).listen(function(){});
 
 ###ORM config
 
-	config/orm.js
+	config/dbConfig.js
 
 A orm config file should be like this
 
@@ -275,7 +282,7 @@ module.exports = function(app, controllers) {
 ##Options
 
 ```js
-require(just-mvc)({
+require(x-mvc)({
 	mode: 'development',           //default: production
 	path: __dirname,               //default: auto detect
     express: require('express'),   //specify your express version
@@ -286,14 +293,10 @@ require(just-mvc)({
 Example:
 
 ```js
-var express = require('express')    // Express 4
-var orm = require('orm')            // ORM 2.1.0
 
-require(just-mvc)({
+require(x-mvc)({
     mode: 'development',
     path: '/Code/Project',
-    express: express,
-    orm: orm
 }, callback);
 ```
 
@@ -361,3 +364,21 @@ module.exports = function(orm, db, mvc) {
     mvc.settings
 };
 ```
+###New Feature
+
+Flush Message
+
+	for flush message follow bellow step
+	when you redirect or show view then first save this two data in session
+	
+	req.session.msg="message";
+	req.session.css_class="css-class";
+	
+	next send bellow variable to view and show
+	
+	msg=req.utility.flushMsg(req)
+
+Slug
+
+	create a slug follow bellow step
+	slug=req.utility.slug(product_name)
