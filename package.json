@@ -1,0 +1,36 @@
+{
+  "name": "x-mvc",
+  "version": "1.1.2",
+  "description": "a simple mvc system",
+  "main": "index.js",
+  "dependencies": {
+    "connect-redis": "1.4.7",
+    "express": "3.16.2",
+    "orm": "2.1.19",
+    "mysql":"2.4.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/netai/x-mvc.git"
+  },
+  "keywords": [
+    "express",
+    "orm",
+    "mvc",
+    "structure"
+  ],
+  "author": {
+    "name": "Netai Nayek",
+    "email": "net.nayek@gmail.com",
+    "url": "http://netai-nayek.blogspot.com/"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/netai/x-mvc/issues"
+  },
+  "homepage": "https://github.com/netai/x-mvc"
+}
