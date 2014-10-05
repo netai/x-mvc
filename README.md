@@ -1,12 +1,13 @@
 x-mvc
 ===============
-this is a simple node.js mvc structure
-this is a extended version of just-mvc it is more better of just-mvc.
+This is simple and light node.js mvc structure just install and create 
+controller,model,view and your project is ready
 in this mvc we have added more feture like:
 
 * create slug
 * flush message
 * more comfortable structure
+* form validation
 
 this mvc have some separet part like
 
@@ -382,3 +383,48 @@ Slug
 
 	create a slug follow bellow step
 	slug=req.utility.slug(product_name)
+
+form validation
+
+        var form_validation = new req.library.form_validation(<input json data>);//initialize
+	form_validation.addRule('<field_name>', '<field label>', 'rule');//add all rule
+        form_validation.run(function(err, input){<code here>});//validate
+        err: get validation error message
+        input: get validation input data
+        
+        Vlidation rule::
+        required: validates that a value exists
+
+		minLength[l]: validates that a value length is at minimum equal to l
+
+		maxLength[l]: validates that a value length is at maximum equal to l
+
+		exactLength[l]: validates that a value length is exactly l
+
+		greaterThan[l]: validate that a value is greater than l
+
+		lessThan[l]: validates that a value is less than l
+
+		alpha: validates that a value contains only alphabet letters [A-Za-z]
+
+		alphaNumeric: validates that a value contains only alphabet letters or numbers [A-Za-z0-9]
+
+		alphaNumericDash: validates that a value contains only alphabet letters, numbers or dash [A-Za-z0-9-]
+
+		numeric: validates that a value is numeric [0-9]
+
+		integer: validates that a value is an integer
+
+		decimal: validates that a value is a decimal number
+
+		natural: validates that a value is a natural number >= 0
+
+		naturalNoZero: validates that a value is a natural number and greater than zero
+
+		email: validates that a value looks like an email
+
+		regex[s]: validates that a value matches the given regular expressions s
+
+		matches[f]: validates that a value matches a value of another field f
+
+		sanitize: sanitize a value against any possible xss attack
