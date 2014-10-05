@@ -8,7 +8,7 @@ exports.flushMsg=function(req){
 	return html;
 	};
 exports.slug=function(str){
-	arr=['@',' ','_',"'",'"'];
+	arr=['@',' ','_',"'",'"','!','#','$','%','^','&','*','(',')',':',';','/','|','+','.',',','{','}','[',']','=','~','`','?'];
 	for(i=0;i<arr.length;i++){
 	str=str.replace(arr[i], "-");
 	}

@@ -3,12 +3,14 @@ var redisStore=require('connect-redis')(express);
 var orm     = require('orm');
 var http    = require('http');
 
-var helper     = require('./helper');
-var model      = require('./model');
-var controller = require('./controller');
-var utility     = require('./utility');
+var helper     = require('./core/helper');
+var model      = require('./core/model');
+var controller = require('./core/controller');
+var utility     = require('./libraries/utility');
+var library     = require('./core/library');
 
 module.exports = function(opt, callback) {
+	
     if(arguments.length === 1) {
         callback = opt;
         opt = {};
@@ -35,6 +37,7 @@ module.exports = function(opt, callback) {
 	app.use(express.bodyParser({keepExtentions:true}));
 	app.use(function(req, res, next) {
                 req.utility = utility;
+                req.library = library;
                 return next();
             });
 
